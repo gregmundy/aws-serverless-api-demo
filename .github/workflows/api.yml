@@ -27,9 +27,6 @@ jobs:
           zip -g ./api.zip ./api/*
           ls -1
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
       - uses: shinyinc/action-aws-cli@v1.2
 
       - name: Ship code to S3
