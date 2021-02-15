@@ -1,6 +1,18 @@
 name: deploy-api-to-lambda
+runs-on: ubuntu-latest
 
 on:
   push:
     branches:
       - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install Dependencies
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: install
