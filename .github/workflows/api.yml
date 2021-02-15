@@ -23,5 +23,5 @@ jobs:
       - name: Create Requirements file
         run: |
           pipenv install
-          echo ::set-env name=VENV::$(pipenv --venv)
-          echo $VENV
+          ls $(pipenv --venv)
+          
