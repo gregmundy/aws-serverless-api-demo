@@ -1,5 +1,4 @@
 name: deploy-api-to-lambda
-runs-on: ubuntu-latest
 
 on:
   push:
