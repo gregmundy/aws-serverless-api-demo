@@ -22,5 +22,6 @@ jobs:
 
       - name: Create Requirements file
         run: |
-          pipenv lock -r > requirements.txt
-          ls -1
+          pipenv install
+          echo ::set-env name=VENV::$(pipenv --venv)
+          echo $VENV
