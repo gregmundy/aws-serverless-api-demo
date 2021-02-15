@@ -20,10 +20,11 @@ jobs:
       - name: Install Pipenv
         run: pip install pipenv
 
-      - name: Create Requirements file
+      - name: Package code and dependencies
         run: |
           pipenv install
           zip -r9 ./api.zip $(pipenv --venv)/lib/python3.8/site-packages/*
+          zip -g ./api.zip ./api/*
           ls -1
           
           
