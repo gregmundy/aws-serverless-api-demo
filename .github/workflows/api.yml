@@ -22,5 +22,5 @@ jobs:
 
       - name: Install Pipenv Dependencies
         run: |
-          pipenv install --target ./
+          pipenv install --target ./venv
           ls -1
