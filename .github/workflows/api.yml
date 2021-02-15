@@ -24,7 +24,7 @@ jobs:
         run: |
           pipenv install
           cd $(pipenv --venv)/lib/python3.8/site-packages/ && zip -r9 ${OLDPWD}/api.zip . && cd -
-          cd ./api && zip -g ${OLDPWD}/api.zip && cd -
+          cd ./api && zip -g ${OLDPWD}/api.zip . && cd -
 
       - uses: shinyinc/action-aws-cli@v1.2
 
