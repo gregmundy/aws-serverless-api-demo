@@ -1,0 +1,6 @@
+name: deploy-api-to-lambda
+
+on:
+  push:
+    branches:
+      - main

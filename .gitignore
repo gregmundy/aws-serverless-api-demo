@@ -1,0 +1,6 @@
+# vscode artifacts
+**/.vscode
+
+# python artifacts
+**/__pycache__
+**/*.py[abc]
