@@ -29,7 +29,7 @@ jobs:
 
       - uses: shinyinc/action-aws-cli@v1.2
 
-      - name: Ship code to S3
+      - name: Ship code to S3 bucket
         run: aws s3 cp api.zip s3://${{ secrets.AWS_S3_BUCKET_NAME }}/api.zip
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
