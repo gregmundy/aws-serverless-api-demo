@@ -23,5 +23,7 @@ jobs:
       - name: Create Requirements file
         run: |
           pipenv install
-          ls $(pipenv --venv)
+          zip -r9 ./api.zip $(pipenv --venv)/lib/python3.8/site-packages/*
+          ls -1
+          
           
