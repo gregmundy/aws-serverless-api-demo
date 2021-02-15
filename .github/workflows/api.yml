@@ -23,10 +23,8 @@ jobs:
       - name: Package code and dependencies
         run: |
           pipenv install
-          cd $(pipenv --venv)/lib/python3.8/site-packages/ && zip -r9 ${OLDPWD}/api.zip . && cd -
-          cd api
-          echo ${OLDPWD}
-          zip -g ${OLDPWD}/api.zip && cd -
+          zip -j9 api.zip $(pipenv --venv)/lib/python3.8/site-packages/*
+          zip -g api.zip ./api/*
 
       - uses: shinyinc/action-aws-cli@v1.2
 
