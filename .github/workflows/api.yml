@@ -20,7 +20,7 @@ jobs:
       - name: Install Pipenv
         run: pip install pipenv
 
-      - name: Install Pipenv Dependencies
+      - name: Create Requirements file
         run: |
-          pipenv install --target ./venv
+          pipenv lock -r > requirements.txt
           ls -1
