@@ -10,6 +10,11 @@ uvicorn = "*"
 boto3 = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pycodestyle = "*"
+autopep8 = "*"
+expects = "*"
 
 [requires]
 python_version = "3.8"
