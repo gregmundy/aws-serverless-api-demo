@@ -1,18 +1,9 @@
+import json
 from fastapi import APIRouter
-from typing import Optional
-from pydantic import BaseModel
+from typing import List, Optional
+from pydantic import BaseModel, parse_obj_as
 
 router = APIRouter()
-
-
-programs = {
-    'abc123': {'programId': 'abc123', 'programName': 'Program 1 Description',
-               'programDescription': 'Program 1'},
-    'abc456': {'programId': 'abc456', 'programName': 'Program 2 Description',
-               'programDescription': 'Program 2 Description'},
-    'abc789': {'programId': 'abc789', 'programName': 'Program 3',
-               'programDescription': 'Program 3 Description'},
-}
 
 
 class Program(BaseModel):
@@ -21,9 +12,30 @@ class Program(BaseModel):
     programDescription: Optional[str] = None
 
 
-@router.get("/programs/{organization_id}", response_model=Program)
-async def get_programs(organization_id: str, program_id: Optional[str] = None):
+class Programs(BaseModel):
+    programs: List[Program] = []
+
+
+programs = [
+    {'programId': 'abc123', 'programName': 'Program 1 Description',
+     'programDescription': 'Program 1'},
+    {'programId': 'abc456', 'programName': 'Program 2 Description',
+     'programDescription': 'Program 2 Description'},
+    {'programId': 'abc789', 'programName': 'Program 3',
+     'programDescription': 'Program 3 Description'}
+]
+
+
+@router.get("/programs/{organization_id}", response_model=List[Program])
+async def get_all_programs(organization_id: str):
     table_name = f'programs_{organization_id}'
-    if program_id:
-        return programs[program_id]
-    return {'table name': f'{table_name}'}
+    return programs
+
+
+@router.get("/programs/{organization_id}/{program_id}", response_model=Program)
+async def get_program(organization_id: str, program_id: str):
+    table_name = f'programs_{organization_id}'
+    for program in programs:
+        if program['programId'] == program_id:
+            return program
+    return {'message': 'Not found'}
