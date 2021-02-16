@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from mangum import Mangum
 from v1.routers import router
 
-app = FastAPI(title='Project Signal Data Resources API', description='A collection of APIs for Project Signal')
+app = FastAPI(title='Project Signal Data Resources API', description='A collection of APIs for Project Signal', openapi_prefix='/dev')
 
 app.include_router(router)
 
