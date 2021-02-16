@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from mangum import Mangum
+from api.v1.routers import router
 
 app = FastAPI(title='Project Signal Data Resources API', description='A collection of APIs for Project Signal')
+
+app.include_router(router)
 
 @app.get('/')
 def get_health():
